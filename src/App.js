@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { BrowserRouter as Router, Routes as Switch, Route, Link, Navigate } from 'react-router-dom'
+import Traditionalfetch from './Traditionalfetch';
+import RqPage from './RqPage';
+import HomePage from './HomePage';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to='/'>Home</Link>
+                        </li>
+                        <li>
+                            <Link to='/super-heroes'>Traditional Super Heroes</Link>
+                        </li>
+                        <li>
+                            <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path='/super-heroes' element={<Traditionalfetch/>}>
+                        
+                    </Route>
+                    <Route path='/rq-super-heroes' element={<RqPage />}>
+                        
+                    </Route>
+                    <Route path='/' element={<HomePage />}>
+                        
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
   );
 }
 
